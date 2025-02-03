@@ -1,0 +1,4 @@
+[16084:8312:0123/003330.743:WARNING:chrome_main_delegate.cc(672)] This is Chrome version 131.0.6778.265 (not a warning)
+[16084:8312:0123/003330.855:INFO:chrome_browser_cloud_management_controller.cc(196)] No machine level policy manager exists.
+[14784:7768:0123/003331.022:WARNING:viz_main_impl.cc(85)] VizNullHypothesis is disabled (not a warning)
+[14784:7768:0123/003331.025:ERROR:direct_composition_support.cc(1034)] QueryInterface to IDCompositionDevice4 failed: No such interface supported (0x80004002)
