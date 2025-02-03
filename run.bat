@@ -1,1 +1,1 @@
-pytest -s -v --html=reports/Automation_report.html .\testCases
+pytest -s -v --html=reports/Automation_report1.html .\testCases
