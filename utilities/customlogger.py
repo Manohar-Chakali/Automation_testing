@@ -2,34 +2,35 @@ import logging
 import os
 
 
-class LogGen():
+class LogGen:
 
     @staticmethod
     def loggen():
-        # Define the log file path
-        path = os.getcwd() + "\\logs\\automation.log"  # Removed redundant parentheses
+        # Define the logs folder and the log file path
+        logs_dir = os.path.join(os.path.abspath(os.curdir), "logs")
+        logs_path = os.path.join(logs_dir, "test_log.log")
 
-        # Print the path where the log file will be created
-        print(f"Log file will be created at: {path}")
+        # Print the log file path to the console for debugging
+        print(f"Log file will be created at: {logs_path}")
 
         try:
-            # Ensure the logs directory exists
-            if not os.path.exists(os.path.dirname(path)):
-                print(f"Creating directory: {os.path.dirname(path)}")  # Print statement to check
-                os.makedirs(os.path.dirname(path))
+            if not os.path.exists(logs_dir):
+                os.makedirs(logs_dir)
 
             # Configure logging
             logging.basicConfig(
-                filename=path,  # Correctly setting the filename argument
+                filename=logs_path,  # Correctly setting the filename argument
                 format="%(asctime)s: %(levelname)s: %(message)s",
-                datefmt="%m/%d/%Y %I:%M:%S %p"  # Corrected date format
+                datefmt="%m/%d/%Y %I:%M:%S %p",  # Corrected date format
+                level=logging.DEBUG  # Ensure logging is set to DEBUG level
             )
 
             # Create a logger
             logger = logging.getLogger()
-
-            # Set logging level to DEBUG
             logger.setLevel(logging.DEBUG)
+
+            # Test the logging
+            logger.debug("Logging setup successful!")
 
             return logger
 
