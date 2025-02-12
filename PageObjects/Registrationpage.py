@@ -13,6 +13,8 @@ class Registration:
     tbutton_agree_xpath = "//input[@name='agree']"
     button_continue_xpath = "//input[@value='Continue']"
     txt_account_success_xpath = "//h1[normalize-space()='Your Account Has Been Created!']"
+    btn_continue_afterreg_xpath = "//a[@class='btn btn-primary']"
+    txt_myaccountmsg_xpath = "//h2[normalize-space()='My Account']"
 
     def __init__(self, driver):
         self.driver = driver
@@ -27,7 +29,7 @@ class Registration:
             EC.presence_of_element_located((By.XPATH, self.txt_lastname_xpath)))
         lname.send_keys("abcd")
 
-    def clickemail(self, email):
+    def clickemail(self,email):
         email_field = WebDriverWait(self.driver, 20).until(EC.presence_of_element_located((By.XPATH, self.txt_email_xpath)))
         email_field.send_keys(email)
     def clicktelephone(self):
@@ -57,3 +59,10 @@ class Registration:
     def getsuccessmessage(self):
         return WebDriverWait(self.driver, 20).until(
             EC.presence_of_element_located((By.XPATH, self.txt_account_success_xpath))).text
+
+    def clickcontinue_after_reg(self):
+        continubtn  = WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable((By.XPATH, self.btn_continue_afterreg_xpath)))
+        continubtn.click()
+
+    def get_myacc_cnfmsg(self):
+        return WebDriverWait(self.driver,10).until(EC.presence_of_element_located((By.XPATH, self.txt_myaccountmsg_xpath))).text

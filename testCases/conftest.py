@@ -1,25 +1,38 @@
 import pytest
 from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
-from selenium.webdriver.chrome.options import Options
-from selenium.webdriver.chrome.service import Service
+from webdriver_manager.firefox import GeckoDriverManager
+from webdriver_manager.microsoft import EdgeChromiumDriverManager
+from selenium.webdriver.chrome.service import Service as ChromeService
+from selenium.webdriver.firefox.service import Service as FirefoxService
+from selenium.webdriver.edge.service import Service as EdgeService
 
+# Fixture to set up the browser based on input argument
 @pytest.fixture()
-def setup():
-    # Initialize ChromeOptions
-    options = Options()
-    # options.add_argument("--headless")  # Running in headless mode
-    options.add_argument("--disable-gpu")
-    options.add_argument("--no-sandbox")
-    options.add_argument("--disable-dev-shm-usage")
-    options.add_argument("--disable-blink-features=AutomationControlled")
+def setup(request):
+    browser = request.config.getoption("--browser")  # Get the browser argument from the command line
+    print(f"Selected Browser: {browser}")  # Log the selected browser
 
-    service=Service(ChromeDriverManager().install())
-    # Initialize the WebDriver with the options and ChromeDriverManager for the driver path
-    driver = webdriver.Chrome(service=service, options=options)
+    # Initialize the WebDriver based on the argument passed
+    if browser.lower() == 'edge':
+        service = EdgeService(EdgeChromiumDriverManager().install())
+        driver = webdriver.Edge(service=service)
+    elif browser.lower() == 'firefox':
+        service = FirefoxService(GeckoDriverManager().install())  # Correct Firefox service initialization
+        driver = webdriver.Firefox(service=service)  # Initialize Firefox browser
+    else:
+        service = ChromeService(ChromeDriverManager().install())  # Correct Chrome service initialization
+        driver = webdriver.Chrome(service=service)
 
-    # Yield the driver to the test
-    yield driver
+    # Maximize window
+    driver.maximize_window()
 
-    # Cleanup: Quit the driver after the test is done
+    yield driver  # Return the driver instance to the test function
+
+    # Teardown: Close the browser after the test is done
     driver.quit()
+
+
+# Adding a command line option for browser selection
+def pytest_addoption(parser):
+    parser.addoption("--browser", action="store", default="Chrome", help="Choose browser: Chrome, Firefox, Edge")

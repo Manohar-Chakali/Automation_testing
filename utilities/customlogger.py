@@ -29,9 +29,6 @@ class LogGen:
             logger = logging.getLogger()
             logger.setLevel(logging.DEBUG)
 
-            # Test the logging
-            logger.debug("Logging setup successful!")
-
             return logger
 
         except Exception as e:

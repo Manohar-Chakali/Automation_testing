@@ -1,8 +1,8 @@
 import os
 import time
-from turtle import Screen
+# from turtle import Screen
 
-from tomlkit import datetime
+# from tomlkit import datetime
 
 from PageObjects.Homepage import Homepage
 from PageObjects.Registrationpage import Registration
@@ -42,7 +42,7 @@ class Test_001_AccountReg:
             self.logger.debug("**** First Name clicked ****")
             self.repage.clicklastname()
             self.logger.debug("**** Last Name clicked ****")
-            self.email = random_string_generator() + '@gamil.com'
+            self.email = random_string_generator() + '@mailinator.com'
             self.repage.clickemail(self.email)
             self.logger.debug("**** Email clicked ****")
             self.repage.clicktelephone()
