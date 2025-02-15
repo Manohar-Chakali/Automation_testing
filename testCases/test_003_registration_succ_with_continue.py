@@ -1,15 +1,21 @@
 import os.path
-# from logging import basicConfig
-# from os import makedirs
 
+import allure
+import pytest
+from allure_commons.types import AttachmentType
 from PageObjects.Registrationpage import Registration
 from PageObjects.Homepage import Homepage
 from utilities.customlogger import LogGen
 from utilities.randomstring import random_string_generator
 
-class Test_reg_succ_continue:
+@allure.severity(allure.severity_level.NORMAL)
+class Test_browser_details:
     baseurl = "https://naveenautomationlabs.com/opencart/"
     logger = LogGen.loggen()
+@pytest.mark.usefixtures("setup")
+class Test_reg_succ_continue(Test_browser_details):
+    @allure.severity(allure.severity_level.NORMAL)
+    @pytest.mark.sanity
     def test_reg(self,setup):
         self.driver = setup
 
@@ -54,12 +60,13 @@ class Test_reg_succ_continue:
 
         except Exception as e:
             self.logger.error(f"Error occurred while registering: {e}")
-            screenshot_dir = os.path.join(os.path.abspath(os.curdir), "screenshots")
-            if not os.path.exists(screenshot_dir):
-                os.makedirs(screenshot_dir)
-            self.driver.save_screenshot(os.path.join(screenshot_dir, "test_reg_succ_continue_error.png"))
-            self.logger.info(f"Failed screenshot saved to {screenshot_dir}")
-
+            # screenshot_dir = os.path.join(os.path.abspath(os.curdir), "screenshots")
+            # if not os.path.exists(screenshot_dir):
+            #     os.makedirs(screenshot_dir)
+            # self.driver.save_screenshot(os.path.join(screenshot_dir, "test_reg_succ_continue_error.png"))
+            # self.logger.info(f"Failed screenshot saved to {screenshot_dir}")
+            allure.attach(self.driver.get_screenshot_as_png(), name = "auuretest",
+                          attachment_type=AttachmentType.PNG)
             assert False  # Fail the test if an exception occurs
 
         finally:
