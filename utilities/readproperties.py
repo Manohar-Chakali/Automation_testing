@@ -1,21 +1,21 @@
 import configparser
 import os
 
-from xdist.remote import config
-
-
 class Read_Commondata:
+    config_path = os.path.join(os.path.abspath(os.curdir)+"\\configurations\\config.ini")
     config = configparser.RawConfigParser()
-    config.read(os.path.abspath(os.curdir)+"\\configurations\\config.ini")
+    config.read(config_path)
     @staticmethod
-    def get_App_url():
-        url = config.get('commonData','baseUrl')
+    def get_App_url(self):
+        url = Read_Commondata.config.get('commonData','baseUrl')
         return  url
 
     @staticmethod
     def get_useremail():
-        email = config.get('commonData','email')
+        email = Read_Commondata.config.get('commonData','email')
+        return  email
 
     @staticmethod
     def get_userpassword():
-        password = config.get('commonDtata','password')
+        password = Read_Commondata.config.get('commonData','password')
+        return password
