@@ -3,14 +3,17 @@ import time
 # from turtle import Screen
 
 # from tomlkit import datetime
+import allure
+from allure_commons.types import AttachmentType
 
 from PageObjects.Homepage import Homepage
 from PageObjects.Registrationpage import Registration
 from utilities.customlogger import LogGen
 from utilities.randomstring import random_string_generator
+from utilities.readproperties import Read_Commondata
 
 class Test_001_AccountReg:
-    baseUrl = "https://naveenautomationlabs.com/opencart/"
+    baseUrl = Read_Commondata.get_App_url()
     logger = LogGen.loggen()
 
     def test_account_reg(self, setup):
@@ -44,6 +47,7 @@ class Test_001_AccountReg:
             self.logger.debug("**** Last Name clicked ****")
             self.email = random_string_generator() + '@mailinator.com'
             self.repage.clickemail(self.email)
+            allure.attach(self.driver.get_screenshot_as_png(),name='Email-added', attachment_type=AttachmentType.PNG)
             self.logger.debug("**** Email clicked ****")
             self.repage.clicktelephone()
             self.logger.debug("**** Telephone clicked ****")

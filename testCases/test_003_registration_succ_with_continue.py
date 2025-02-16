@@ -7,10 +7,11 @@ from PageObjects.Registrationpage import Registration
 from PageObjects.Homepage import Homepage
 from utilities.customlogger import LogGen
 from utilities.randomstring import random_string_generator
+from utilities.readproperties import Read_Commondata
 
 @allure.severity(allure.severity_level.NORMAL)
 class Test_browser_details:
-    baseurl = "https://naveenautomationlabs.com/opencart/"
+    baseurl = Read_Commondata.get_App_url()
     logger = LogGen.loggen()
 @pytest.mark.usefixtures("setup")
 class Test_reg_succ_continue(Test_browser_details):

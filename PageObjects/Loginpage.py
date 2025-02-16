@@ -11,12 +11,12 @@ class Login:
     def __init__(self, driver):
         self.driver = driver
 
-    def click_email(self):
+    def click_email(self,email):
         email_field = WebDriverWait(self.driver,10).until(EC.presence_of_element_located((By.XPATH, self.txt_email_xpath)))
-        email_field.send_keys("abcd@mailinator.com")
-    def click_password(self):
+        email_field.send_keys(email)
+    def click_password(self,password):
         password_field = WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.XPATH, self.txt_password_xpath)))
-        password_field.send_keys("abcd@123")
+        password_field.send_keys(password)
     def click_login(self):
         login_button = WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.XPATH, self.btn_login_xpath)))
         login_button.click()
