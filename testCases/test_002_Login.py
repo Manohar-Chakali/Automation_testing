@@ -8,7 +8,7 @@ from utilities.customlogger import LogGen
 from utilities.readproperties import Read_Commondata
 
 @allure.severity(allure.severity_level.NORMAL)
-@pytest.fixture(scope="class")
+
 class Test_002_login:
     baseurl = Read_Commondata.get_App_url()
     logger = LogGen.loggen()

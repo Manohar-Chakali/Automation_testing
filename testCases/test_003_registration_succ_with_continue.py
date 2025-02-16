@@ -16,7 +16,6 @@ class Test_browser_details:
 @pytest.mark.usefixtures("setup")
 class Test_reg_succ_continue(Test_browser_details):
     @allure.severity(allure.severity_level.NORMAL)
-    @pytest.mark.sanity
     def test_reg(self,setup):
         self.driver = setup
 
