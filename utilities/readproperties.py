@@ -6,7 +6,7 @@ class Read_Commondata:
     config = configparser.RawConfigParser()
     config.read(config_path)
     @staticmethod
-    def get_App_url(self):
+    def get_App_url():
         url = Read_Commondata.config.get('commonData','baseUrl')
         return  url
 
