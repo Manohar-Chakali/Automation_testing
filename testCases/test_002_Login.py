@@ -1,11 +1,12 @@
 import allure
-import pytest
+# import pytest
 from allure_commons.types import AttachmentType
 
 from PageObjects.Homepage import Homepage
 from PageObjects.Loginpage import Login
 from utilities.customlogger import LogGen
 from utilities.readproperties import Read_Commondata
+from PageObjects.Myaccount_Page import My_Account_page
 
 @allure.severity(allure.severity_level.NORMAL)
 
@@ -25,6 +26,8 @@ class Test_002_login:
             self.logger.debug("**** My Account clicked ****")
             self.hp.clicklogin()
             self.logger.debug("**** Clicked login button ****")
+            self.ma = My_Account_page(self.driver)
+
         except Exception as e:
             self.logger.error(f"error during navigation {e}")
             allure.attach(self.driver.get_screenshot_as_png(), name = "Error_during_navigation",attachment_type=AttachmentType.PNG)
@@ -54,6 +57,10 @@ class Test_002_login:
 
         if self.myacc.is_displayed():
             self.logger.info("**** Login Successful ****")
+            self.ma.click_myaccount()
+            self.logger.info("**** Clicked on My account ****")
+            self.ma.click_logout()
+            self.logger.info("**** Logout Successful ****")
             assert True
         else:
             self.logger.error("**** Login unsuccessful, My Account page not displayed ****")
