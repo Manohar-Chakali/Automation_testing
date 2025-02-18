@@ -25,20 +25,18 @@ class Login:
     def myaccount_page(self):
         try:
             # Check if the 'My Account' page is displayed
-            WebDriverWait(self.driver, 5).until(
-                EC.visibility_of_element_located((By.XPATH, self.txt_login_cnf_msg_xpath))
-            )
-            return "Valid"
-        except:
-            pass
+           if WebDriverWait(self.driver, 5).until(
+                EC.visibility_of_element_located((By.XPATH, self.txt_login_cnf_msg_xpath))):
+                return "Valid"
 
-        try:
-            # Check if an error message is displayed (modify this XPath based on actual error message)
-            WebDriverWait(self.driver,10).until(EC.visibility_of_element_located((By.XPATH, self.txt_accout_exceeded_xapth)))
-            WebDriverWait(self.driver, 5).until(
-                EC.visibility_of_element_located((By.XPATH, self.txt_login_error_xpath))
-            )
-            return "Invalid"
+           elif WebDriverWait(self.driver,10).until(
+                   EC.visibility_of_element_located((By.XPATH, self.txt_accout_exceeded_xapth))
+           ):
+                return "Invalid"
+           elif WebDriverWait(self.driver, 5).until(
+                   EC.visibility_of_element_located((By.XPATH, self.txt_login_error_xpath))
+           ):
+                return "Invalid"
         except:
             return "Unknown"  # If neither success nor failure is found
 

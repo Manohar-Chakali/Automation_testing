@@ -55,7 +55,7 @@ class Test_002_login:
 
 
 
-        if self.myacc.is_displayed():
+        if self.myacc == "Valid":
             self.logger.info("**** Login Successful ****")
             self.ma.click_myaccount()
             self.logger.info("**** Clicked on My account ****")
