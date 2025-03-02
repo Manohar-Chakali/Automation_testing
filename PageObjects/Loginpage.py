@@ -8,7 +8,7 @@ class Login:
     btn_login_xpath = "//input[@value='Login']"
     txt_login_cnf_msg_xpath = "//h2[normalize-space()='My Account']"
     txt_login_error_xpath = "//div[contains(text(), 'Warning: No match for E-Mail Address and/or Password.')]"
-    txt_accout_exceeded_xapth = "//div[@class='alert alert-danger alert-dismissible']"
+    txt_accout_exceeded_xapth = ("//div[@class='alert alert-danger alert-dismissible']")
     def __init__(self, driver):
         self.driver = driver
 
@@ -24,19 +24,25 @@ class Login:
 
     def myaccount_page(self):
         try:
-            # Check if the 'My Account' page is displayed
-           if WebDriverWait(self.driver, 5).until(
-                EC.visibility_of_element_located((By.XPATH, self.txt_login_cnf_msg_xpath))):
+            # Check for "Invalid credentials"
+            if WebDriverWait(self.driver, 5, poll_frequency=2).until(
+                    EC.visibility_of_element_located((By.XPATH, self.txt_login_error_xpath))
+            ):
+                return "Invalid"
+
+            # Check for "Exceeded Login Attempts" alert
+            elif WebDriverWait(self.driver, 5, poll_frequency=2).until(
+                    EC.visibility_of_element_located((By.XPATH, self.txt_accout_exceeded_xapth))
+            ):
+                return "Exceeded"
+
+            # Check for successful login (My Account Page)
+            elif WebDriverWait(self.driver, 5, poll_frequency=2).until(
+                    EC.visibility_of_element_located((By.XPATH, self.txt_login_cnf_msg_xpath))
+            ):
                 return "Valid"
 
-           elif WebDriverWait(self.driver,10).until(
-                   EC.visibility_of_element_located((By.XPATH, self.txt_accout_exceeded_xapth))
-           ):
-                return "Invalid"
-           elif WebDriverWait(self.driver, 5).until(
-                   EC.visibility_of_element_located((By.XPATH, self.txt_login_error_xpath))
-           ):
-                return "Invalid"
-        except:
-            return "Unknown"  # If neither success nor failure is found
+        except Exception as e:
+            print(f"Error in myaccount_page(): {e}")
+            return "Unknown"
 
