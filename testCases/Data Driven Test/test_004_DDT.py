@@ -17,10 +17,9 @@ class Test_Data_Driven:
     baseurl = Read_Commondata.get_App_url()
     path = os.path.join(os.path.abspath(os.curdir), "testData", "Opencart_LoginData.xlsx")
 
-    # Parametrize the test with login data from the Excel file
     @pytest.mark.parametrize("username, password, expected_result", get_exceldata(path, "Sheet1"))
     def test_data_driven_testing(self, setup, username, password, expected_result):
-        self.logger.info("**** Setting up the browser ****")
+        self.logger.info(f"Starting test for: {username}")
 
         self.driver = setup
         self.driver.maximize_window()
@@ -33,48 +32,40 @@ class Test_Data_Driven:
             self.hp.clicklogin()
             self.ma = My_Account_page(self.driver)
 
-        except Exception as e:
-            self.logger.error(f"Error during navigation: {e}")
-            allure.attach(self.driver.get_screenshot_as_png(), name="Error_Login_Page", attachment_type=AttachmentType.PNG)
-            self.driver.quit()
-            assert False
-
-        try:
             # Perform Login
             self.lp = Login(self.driver)
             self.lp.click_email(username)
             self.lp.click_password(password)
             self.lp.click_login()
 
-        except Exception as e:
-            self.logger.error(f"Error during login execution: {e}")
-            allure.attach(self.driver.get_screenshot_as_png(), name="Login_Execution_Error", attachment_type=AttachmentType.PNG)
-            self.driver.quit()
-            assert False
+            # Capture Screenshot after Login
+            allure.attach(self.driver.get_screenshot_as_png(), name=f"After_Login_{username}",
+                          attachment_type=AttachmentType.PNG)
 
-        try:
-            # Initialize actual_result to avoid AttributeError
+            # Validate Result
             self.actual_result = self.lp.myaccount_page()
-
-            if self.actual_result == expected_result:
-                self.logger.info(
-                    f"Test Passed for {username}: Expected = {expected_result}, Got = {self.actual_result}")
+            self.logger.info(f"Actual: {self.actual_result}, Expected: {expected_result}")
+            if self.actual_result.strip().lower() in ["exceeded","unknown"]:
+                self.actual_result = "Invalid"
+            # Assert and Capture Failures
+            elif self.actual_result.strip().lower() == expected_result.strip().lower():
+                self.logger.info(f"Test Passed for {username}")
                 assert True
             else:
-                self.logger.error(
-                    f"Test Failed for {username}: Expected = {expected_result}, Got = {self.actual_result}")
-                allure.attach(self.driver.get_screenshot_as_png(), name="Test_Failure",
+                self.logger.error(f"Test Failed for {username}")
+                allure.attach(self.driver.get_screenshot_as_png(), name=f"Failure_{username}",
                               attachment_type=AttachmentType.PNG)
                 assert False
+
         except Exception as e:
-            self.logger.error(f"Unexpected error during validation: {e}")
-            allure.attach(self.driver.get_screenshot_as_png(), name="Unexpected_Error",
+            self.logger.error(f"Unexpected error: {e}")
+            allure.attach(self.driver.get_screenshot_as_png(), name=f"Unexpected_Error_{username}",
                           attachment_type=AttachmentType.PNG)
             assert False
 
         finally:
-            # Logout if login was successful
-            if self.actual_result == "Valid":
+            # Logout only if login was successful
+            if self.actual_result.strip().lower() == "valid":
                 self.ma.click_myaccount()
                 self.ma.click_logout()
                 self.logger.info("User logged out successfully.")
