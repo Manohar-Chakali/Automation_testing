@@ -1,4 +1,4 @@
-
+import pytest
 import allure
 from allure_commons.types import AttachmentType
 from PageObjects.Homepage import Homepage
@@ -8,6 +8,10 @@ from testCases.conftest import setup
 from utilities.customlogger import LogGen
 from utilities.readproperties import Read_Commondata
 
+@pytest.mark.negative
+@pytest.mark.login
+@pytest.mark.regression
+@pytest.mark.critical
 class Test_invalid_email:
     baseurl = Read_Commondata.get_App_url()
     logger = LogGen.loggen()

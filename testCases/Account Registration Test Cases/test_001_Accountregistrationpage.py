@@ -1,17 +1,17 @@
+import pytest
 import os
 import time
-# from turtle import Screen
-
-# from tomlkit import datetime
 import allure
 from allure_commons.types import AttachmentType
-
 from PageObjects.Homepage import Homepage
 from PageObjects.Registrationpage import Registration
 from utilities.customlogger import LogGen
 from utilities.randomstring import random_string_generator
 from utilities.readproperties import Read_Commondata
 
+@pytest.mark.e2e
+@pytest.mark.registration
+@allure.severity(allure.severity_level.BLOCKER)
 class Test_001_AccountReg:
     baseUrl = Read_Commondata.get_App_url()
     logger = LogGen.loggen()

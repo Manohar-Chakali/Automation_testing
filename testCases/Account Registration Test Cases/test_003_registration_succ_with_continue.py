@@ -1,5 +1,5 @@
+# Registration test and confirming that user taken to 'My Account' page
 import os.path
-
 import allure
 import pytest
 from allure_commons.types import AttachmentType
@@ -9,7 +9,10 @@ from utilities.customlogger import LogGen
 from utilities.randomstring import random_string_generator
 from utilities.readproperties import Read_Commondata
 
-@allure.severity(allure.severity_level.NORMAL)
+@pytest.mark.e2e
+@pytest.mark.registration
+@pytest.mark.critical
+@allure.severity(allure.severity_level.CRITICAL)
 class Test_browser_details:
     baseurl = Read_Commondata.get_App_url()
     logger = LogGen.loggen()

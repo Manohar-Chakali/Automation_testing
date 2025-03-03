@@ -1,6 +1,8 @@
 import allure
 import pytest
 from allure_commons.types import AttachmentType
+from allure_pytest.utils import pytest_markers
+
 from testCases.conftest import setup
 from utilities.Excel_Data import get_exceldata
 from PageObjects.Homepage import Homepage
@@ -10,6 +12,11 @@ from utilities.readproperties import Read_Commondata
 from utilities.customlogger import LogGen
 import os
 
+@pytest.mark.critical
+@pytest.mark.login
+@pytest.mark.datadriven
+@pytest.mark.positive
+@pytest.mark.negative
 class Test_Data_Driven:
     logger = LogGen.loggen()
     logger.info("**** Logging Started ****")

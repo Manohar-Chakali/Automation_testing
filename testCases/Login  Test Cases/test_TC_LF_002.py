@@ -1,3 +1,5 @@
+#Test with both email and password are invalid
+import pytest
 import allure
 from allure_commons.types import AttachmentType
 
@@ -8,6 +10,10 @@ from utilities.customlogger import LogGen
 from utilities.readproperties import Read_Commondata
 from PageObjects.Myaccount_Page import My_Account_page
 
+@pytest.mark.negative
+@pytest.mark.login
+@pytest.mark.regression
+@pytest.mark.critical
 class Test_TC_LF_002:
     baseurl = Read_Commondata.get_App_url()
     logger = LogGen.loggen()
