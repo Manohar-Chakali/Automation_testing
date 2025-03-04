@@ -46,7 +46,7 @@ class Test_Data_Driven:
             self.lp.click_login()
 
             # Capture Screenshot after Login
-            allure.attach(self.driver.get_screenshot_as_png(), name=f"After_Login_{username}",
+            allure.attach(self.driver.get_screenshot_as_png(), name=f"Login_status_for_{username}",
                           attachment_type=AttachmentType.PNG)
 
             # Validate Result
