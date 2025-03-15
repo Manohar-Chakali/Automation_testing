@@ -2,4 +2,4 @@
 
 @REM pytest -s -v --alluredir="C:\Users\Lenovo\PycharmProjects\E-commersPorject\reports" .\testCases
 
-pytest -s -v --alluredir="C:\Users\Lenovo\PycharmProjects\E-commersPorject\reports" '.\testCases\Logout Test Cases\TC_LG_004.py'
+pytest -s -v --alluredir="C:\Users\Lenovo\PycharmProjects\E-commersPorject\reports" '.\testCases\Logout Test Cases\test_TC_LG_004.py'
