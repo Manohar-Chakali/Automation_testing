@@ -4,7 +4,9 @@
 
 @REM pytest -s -v --alluredir="C:/Users/Lenovo/PycharmProjects/E-commersPorject/reports" --junitxml="C:/Users/Lenovo/PycharmProjects/E-commersPorject/reports/junit_report.xml" ".\testCases\Logout Test Cases" || exit 0
 
- pytest --junitxml=reports/junit_report.xml --alluredir=reports/allure ".\testCases\Logout Test Cases\test_TC_LG_004.py" || exit 0
+@REM pytest --junitxml=reports/junit_report.xml --alluredir=reports/allure ".\testCases\Logout Test Cases\test_TC_LG_004.py" || exit 0
+
+pytest ".\testCases\Logout Test Cases\test_TC_LG_004.py" --junitxml=reports/junit_report.xml --alluredir=reports/allure --clean-alluredir || exit 0
 
 
 
