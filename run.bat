@@ -2,4 +2,4 @@
 
 @REM pytest -s -v --alluredir="C:\Users\Lenovo\PycharmProjects\E-commersPorject\reports" .\testCases
 
-pytest -s -v --alluredir="reports" --junitxml="reports/junit_report.xml" ".\testCases\Logout Test Cases\test_TC_LG_004.py" --maxfail=0
+pytest -s -v --alluredir="reports" --junitxml="reports/junit_report.xml" ".\testCases\Logout Test Cases" --maxfail=0
