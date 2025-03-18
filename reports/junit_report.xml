@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?><testsuites><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="1" time="40.692" timestamp="2025-03-18T22:20:04.110327+05:30" hostname="DESKTOP-DL1JSBI"><testcase classname="testCases.Logout Test Cases.test_TC_LG_004.Test_TC_LG_004" name="test_TC_LG_004" time="40.505"><failure message="assert False">self = &lt;test_TC_LG_004.Test_TC_LG_004 object at 0x000001D52F9C0740&gt;
-setup = &lt;selenium.webdriver.chrome.webdriver.WebDriver (session="245b07fa3043a5d7fbc3d650504de055")&gt;
+<?xml version="1.0" encoding="utf-8"?><testsuites><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="2" time="78.496" timestamp="2025-03-18T23:29:29.053822+05:30" hostname="DESKTOP-DL1JSBI"><testcase classname="testCases.Logout Test Cases.test_TC_LG_003.Test_TC_LG_003" name="test_TC_LG_003" time="38.534" /><testcase classname="testCases.Logout Test Cases.test_TC_LG_004.Test_TC_LG_004" name="test_TC_LG_004" time="39.745"><failure message="assert False">self = &lt;test_TC_LG_004.Test_TC_LG_004 object at 0x000001C1F71F7B10&gt;
+setup = &lt;selenium.webdriver.chrome.webdriver.WebDriver (session="68e08c9f77c027d7f0993eacdbca4f33")&gt;
 
     def test_TC_LG_004(self, setup):
         self.driver = setup
@@ -48,8 +48,8 @@ testCases\Logout Test Cases\test_TC_LG_004.py:61: AssertionError
 
 During handling of the above exception, another exception occurred:
 
-self = &lt;test_TC_LG_004.Test_TC_LG_004 object at 0x000001D52F9C0740&gt;
-setup = &lt;selenium.webdriver.chrome.webdriver.WebDriver (session="245b07fa3043a5d7fbc3d650504de055")&gt;
+self = &lt;test_TC_LG_004.Test_TC_LG_004 object at 0x000001C1F71F7B10&gt;
+setup = &lt;selenium.webdriver.chrome.webdriver.WebDriver (session="68e08c9f77c027d7f0993eacdbca4f33")&gt;
 
     def test_TC_LG_004(self, setup):
         self.driver = setup
