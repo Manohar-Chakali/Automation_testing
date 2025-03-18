@@ -75,4 +75,4 @@ class Test_Data_Driven:
             if self.actual_result.strip().lower() == "valid":
                 self.ma.click_myaccount()
                 self.ma.click_logout()
-                self.logger.info("User logged out successfully.")
+                self.logger.info(f"{username} logged out successfully.")

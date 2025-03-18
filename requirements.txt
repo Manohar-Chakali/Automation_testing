@@ -6,3 +6,6 @@ openpyxl
 allure-pytest
 pytest-xdist
 pylint
+pytest-xml
+pytest-item-dict
+

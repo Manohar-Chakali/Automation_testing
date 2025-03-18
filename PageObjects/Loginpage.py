@@ -75,5 +75,5 @@ class Login:
                 return "Unknown"
 
         except Exception as e:
-            print(f"Exception in myaccount_page(): {e}")
+            print(f"Exception in login process of my account page: {e}")
             return "Unknown error occurred"
