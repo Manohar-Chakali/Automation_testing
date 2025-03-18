@@ -6,6 +6,13 @@ from webdriver_manager.microsoft import EdgeChromiumDriverManager
 from selenium.webdriver.chrome.service import Service as ChromeService
 from selenium.webdriver.firefox.service import Service as FirefoxService
 from selenium.webdriver.edge.service import Service as EdgeService
+from _pytest.config import ExitCode
+
+@pytest.hookimpl(tryfirst=True)
+def pytest_sessionfinish(session, exitstatus):
+    if exitstatus == ExitCode.NO_TESTS_COLLECTED:
+        session.exitstatus = 0  # Avoids pytest suite being shown
+
 
 # Fixture to set up the browser based on input argument
 @pytest.fixture()
@@ -36,3 +43,5 @@ def setup(request):
 # Adding a command line option for browser selection
 def pytest_addoption(parser):
     parser.addoption("--browser", action="store", default="Chrome", help="Choose browser: Chrome, Firefox, Edge")
+
+
