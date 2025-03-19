@@ -1,0 +1,3 @@
+Selected Browser: Chrome
+Is the element visible: True
+Is the element clickable: True

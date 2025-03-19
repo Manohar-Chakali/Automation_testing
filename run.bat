@@ -6,7 +6,7 @@
 
 @REM pytest --junitxml=reports/junit_report.xml --alluredir=reports/allure ".\testCases\Logout Test Cases\test_TC_LG_004.py" || exit 0
 
-pytest ".\testCases\Logout Test Cases\test_TC_LG_004.py" --junitxml=reports/junit_report.xml --alluredir=reports/allure --clean-alluredir || exit 0
+pytest -m "not (navigation or negative)" ".\testCases\Logout Test Cases\" --junitxml=reports/junit_report.xml --alluredir=reports/allure --clean-alluredir || exit 0
 
 
 

@@ -1,0 +1,2 @@
+Selected Browser: Chrome
+Detected: Valid Login

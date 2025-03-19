@@ -1,0 +1,4 @@
+Selected Browser: Chrome
+Is the element visible: True
+Is the element clickable: True
+screen shot saves to C:\Users\Lenovo\PycharmProjects\E-commersPorject\screenshots

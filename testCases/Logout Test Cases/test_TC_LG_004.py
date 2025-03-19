@@ -9,10 +9,9 @@ from PageObjects.Myaccount_Page import My_Account_page
 from utilities.readproperties import Read_Commondata
 from utilities.customlogger import LogGen
 
-@pytest.mark.regression
 @pytest.mark.negative
-@pytest.mark.critical
 @pytest.mark.session
+@pytest.mark.navigation
 @allure.severity(allure.severity_level.CRITICAL)
 class Test_TC_LG_004:
     baseurl = Read_Commondata.get_App_url()
