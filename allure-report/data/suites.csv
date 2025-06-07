@@ -1,0 +1,7 @@
+"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
+"","28204","test_reg","","Wed Mar 19 19:37:13 IST 2025","passed","Wed Mar 19 19:37:41 IST 2025","","pytest","testCases.Account Registration Test Cases.test_003_registration_succ_with_continue.Test_reg_succ_continue",""
+"","16947","test_TC_LG_004","testCases.Logout Test Cases","Tue Mar 18 23:50:38 IST 2025","failed","Tue Mar 18 23:50:55 IST 2025","Test_TC_LG_004","test_TC_LG_004","",""
+"","17990","test_login","","Wed Mar 19 19:37:13 IST 2025","passed","Wed Mar 19 19:37:31 IST 2025","","pytest","testCases.Login  Test Cases.test_002_Login.Test_002_login",""
+"","30323","test_account_reg","","Wed Mar 19 19:37:13 IST 2025","passed","Wed Mar 19 19:37:43 IST 2025","","pytest","testCases.Account Registration Test Cases.test_001_Accountregistrationpage.Test_001_AccountReg",""
+"","24688","test_LG_btn_check","testCases.Logout Test Cases","Sat Jun 07 22:19:22 IST 2025","passed","Sat Jun 07 22:19:46 IST 2025","Test_TC_LG_005","test_TC_LG_005","",""
+"","16598","test_TC_LG_003","testCases.Logout Test Cases","Tue Mar 18 23:49:58 IST 2025","passed","Tue Mar 18 23:50:15 IST 2025","Test_TC_LG_003","test_TC_LG_003","",""
